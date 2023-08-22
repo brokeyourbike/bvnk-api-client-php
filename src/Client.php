@@ -119,6 +119,9 @@ class Client implements HttpClientInterface
 
     /**
      * This function generates a normalized string out of the header options
+     * 
+     * @param string $type
+     * @param array<string> $options
      */
     private function generateNormalizedString(string $type, array $options): string
     {
@@ -142,7 +145,6 @@ class Client implements HttpClientInterface
 
     /**
      * This function generates the Hawk authentication header
-     * @throws Exception Will throw an exception if the provided arguments are of an invalid type.
      */
     private function hawkHeader(string $method, string $uri): string
     {
