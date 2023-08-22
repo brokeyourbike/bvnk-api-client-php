@@ -153,12 +153,12 @@ class Client implements HttpClientInterface
 
         // Calculate signature to hash
         $artifacts = [
-            'ts' => $timestamp,
+            'ts' => (string) $timestamp,
             'nonce' => $this->generateNonce(6),
             'method' => $method,
-            'resource' => parse_url($uri, PHP_URL_PATH) . (parse_url($uri, PHP_URL_QUERY) ? '?' . parse_url($uri, PHP_URL_QUERY) : ''),
-            'host' => parse_url($uri, PHP_URL_HOST),
-            'port' => parse_url($uri, PHP_URL_PORT) ?? (parse_url($uri, PHP_URL_SCHEME) === "http" ? 80 : 443),
+            'resource' => (string) parse_url($uri, PHP_URL_PATH) . (parse_url($uri, PHP_URL_QUERY) ? '?' . parse_url($uri, PHP_URL_QUERY) : ''),
+            'host' => (string) parse_url($uri, PHP_URL_HOST),
+            'port' => (string) (parse_url($uri, PHP_URL_PORT) ?? (parse_url($uri, PHP_URL_SCHEME) === "http" ? 80 : 443)),
         ];
 
         // Generate the MAC
